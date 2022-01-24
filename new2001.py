@@ -189,5 +189,3 @@ x = 230
 #
 #
 # print(withdraw(x))
-
-
