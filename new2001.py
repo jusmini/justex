@@ -190,29 +190,24 @@ x = 230
 #
 # print(withdraw(x))
 
-x = "())(()"
-
-
-from collections import Counter
+x = "(()))((()())())"
 
 
 def valid_parentheses(text: str):
-    result = []
+    counter = 0
     if len(text) == 0:
         return True
 
     for character in text:
-        if ord(character) == 40 or ord(character) == 41:
-            result.append(character)
+        if ord(character) == 40:
+            counter += 1
+        elif ord(character) == 41:
+            counter -= 1
 
-    if result[0] == '(' and result[-1] == ')':
-        counted_characters = dict(Counter(result))
-        if counted_characters['('] == counted_characters[')']:
-            return True
-        else:
+        if counter < 0:
             return False
-    else:
-        return False
+
+    return counter == 0
 
 
 print(valid_parentheses(x))
